@@ -58,10 +58,13 @@
 
 			<body>
 			
+			{% for question in questions %}
+			
 			<div id="container">
 				<div id="quest">
-					{{ question }}
+					{{ question.question }}
 				</div>
+				{% endfor %}
 				
 				<a href="#">
 				<div id="answleft">

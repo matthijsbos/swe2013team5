@@ -4,20 +4,20 @@
 # Comment:
 
 from flask import render_template
-from models.Hello import Model
+from models.Question import Question
 from dbconnection import session
 
 class Hello():
     def __init__(self):
         # create a few database items
-        for model in session.query(Model):
+        for model in session.query(Question):
             break
         else:
-            session.add(Model("hello"))
-            session.add(Model("Groep"))
-            session.add(Model("2"))
+            session.add(Question("1","What am I?",True))
+            session.add(Question("1","Who am I?",True))
+            session.add(Question("1","Where am I?",True))
             session.commit()
 
 
     def render(self):
-        return render_template('index.html',wordlist=Model.getall())
+        return render_template('index.html',questions=session.query(Question).filter().all())

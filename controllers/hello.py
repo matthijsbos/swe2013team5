@@ -20,4 +20,4 @@ class Hello():
 
 
     def render(self):
-        return render_template('hello.html',wordlist=Model.getall())
+        return render_template('index.html',wordlist=Model.getall())

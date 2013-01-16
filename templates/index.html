@@ -1,33 +1,13 @@
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-			<html xmlns="http://www.w3.org/1999/xhtml">
-			<head>
-			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-			<LINK href="/static/style.css" rel="stylesheet" type="text/css">
-			<title>Rating</title>
-			</head>
+<html>
+<head><title>Groep 2</title></head>
+<body>
+    <a href="#" onclick="document.answerForm.submit(); return false;">Post an answer</a>
+    <form action="http://localhost:5000/answer" method="post" name="answerForm">
+    </form>
 
-			<body>
-			
-			{% for question in questions %}
-			
-			<div id="container">
-				<div id="quest">
-					{{ question.question }}
-				</div>
-				{% endfor %}
-				
-				<a href="#">
-				<div id="answleft">
-					{{ answer }}
-				</div>
-				</a>
-				
-				<a href="#">
-				<div id="answright">
-					{{ answer }}
-				</div>
-				</a>
-			</div>
+    <hr />
+    LTI data:<br />
+    <pre>{{ lti_dump }}</pre>
 
-			</body>
-			</html>
+</body>
+</html>

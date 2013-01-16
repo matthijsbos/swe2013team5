@@ -1,18 +1,32 @@
 from sqlalchemy import Column, String, Integer, Boolean, DateTime
+from sqlalchemt.orm import relationship
 from ../dbconnection import engine, session
 from datetime import datetime
 
 Base = declarative_base()
 
-class Answer(Base):
+class AnswerModel(Base):
     __tablename__ = 'answer'
 
     id = Column(Integer, primary_key=True)
-    question_id = Column(Integer,ForeignKey('question.id'))
+    questionID = Column(Integer,ForeignKey('question.id'))
+    question = relationship('question') 
     created = Column(DateTime, default=datetime.now)
-    user_id = Column(String, nullable=False)
-    answer = Column(String, nullable=False)
+    userID = Column(String, nullable=False)
+    text = Column(String, nullable=False)
 
-    def by_id(id):
-        return session.query(Answer).filter(Answer.id == id).one()
+    def __repr__(self):
+        return self.text + 'Represent'
+
+    def __str__(self):
+        return self.text
+
+    @staticmethod
+    def save(questionID,userID,answerText):
+        session.add(AnswerModel(questionID=questionID,userID=userID,text=answerText))
+        session.commit()
+
+Base.metadata.create_all(engine)
+
+
 

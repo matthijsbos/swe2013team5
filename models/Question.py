@@ -30,5 +30,4 @@ class Question(Base):
     def by_id(id):
         return session.query(Question).filter(Question.id == id).one()
 
-
 Base.metadata.create_all(engine)

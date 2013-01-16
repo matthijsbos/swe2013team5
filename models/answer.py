@@ -1,6 +1,7 @@
-from sqlalchemy import Column, String, Integer, Boolean, DateTime
-from sqlalchemt.orm import relationship
-from ../dbconnection import engine, session
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, String, Integer, Boolean, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
+from dbconnection import engine, session
 from datetime import datetime
 
 Base = declarative_base()
@@ -20,13 +21,11 @@ class AnswerModel(Base):
 
     def __str__(self):
         return self.text
-
-    @staticmethod
     def save(questionID,userID,answerText):
         session.add(AnswerModel(questionID=questionID,userID=userID,text=answerText))
         session.commit()
 
-Base.metadata.create_all(engine)
+#Base.metadata.create_all(engine)
 
 
 

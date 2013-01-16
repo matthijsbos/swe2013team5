@@ -11,9 +11,9 @@ class AnswerChoice(Base):
     id = Column(Integer, primary_key=true, nullable=False)
     created = Column(DateTime, default=datetime.now, nullable=False) 
     user_id = Column(String,nullable=False)
-    answer_id0 = Column(Integer, nullable=False, ForeignKey('answer.id'))
+    answer_id0 = Column(Integer, ForeignKey('answer.id'),nullable=False)
     answer0 = relationship('Answer', foreign_keys=[answer_id0])
-    answer_id1 = Column(Integer,nullable=False, ForeignKey('answer.id'))
+    answer_id1 = Column(Integer,ForeignKey('answer.id'),nullable=False)
     answer1 = relationship('Answer', foreign_keys=[answer_id1])
     choice = Column(Boolean,nullable=False)
     
